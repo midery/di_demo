@@ -10,9 +10,15 @@ import javax.inject.Inject
     AppScope::class,
     replaces = [AuthInteractorImpl::class]
 )
-class StubAuthInteractor @Inject constructor() : AuthInteractor {
+object StubAuthInteractor : AuthInteractor {
 
     override fun getUserName(): String {
         return "Stub user!"
+    }
+
+    override fun isAuthorized(): Boolean = true
+
+    override fun authorize() {
+        //do nothing
     }
 }

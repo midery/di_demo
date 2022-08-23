@@ -1,4 +1,4 @@
-package com.example.di_demo
+package com.example.component
 
 import android.content.Context
 
@@ -14,6 +14,6 @@ inline fun <reified T> findDependency(componentHolder: ComponentHolder<*>): T {
 
 inline fun <reified T> Context.findDependency(): T {
     val app = applicationContext
-    check(app is App) { "Application context should be inherited from ${App::class.qualifiedName}" }
+    check(app is ComponentHolder<*>) { "Application context should be inherited from ${ComponentHolder::class.qualifiedName}" }
     return findDependency(app)
 }

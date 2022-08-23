@@ -14,7 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "di_demo"
 include ':app'
-include ':auth_api'
-include ':auth_impl'
-include ':common::scopes'
+include ':auth:api'
+include ':auth:impl'
+include ':common:android'
+include ':common:scopes'
 include ':common:component-holder'

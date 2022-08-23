@@ -3,12 +3,14 @@ package com.example.auth_impl
 import com.example.auth_api.AuthInteractor
 import com.example.scopes.AppScope
 import com.squareup.anvil.annotations.ContributesBinding
+import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
+import javax.inject.Singleton
 
 @ContributesBinding(AppScope::class)
 class AuthInteractorImpl @Inject constructor() : AuthInteractor {
 
-    val isAuthorized: AtomicReference(false)
+    private val isAuthorized = AtomicBoolean(false)
 
     @Throws(IllegalStateException::class)
     override fun getUserName(): String {

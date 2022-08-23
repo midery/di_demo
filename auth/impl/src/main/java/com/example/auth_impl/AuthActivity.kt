@@ -3,9 +3,12 @@ package com.example.auth_impl
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.auth_api.AuthDependencies
 import com.example.auth_impl.databinding.ActivityAuthBinding
 import com.example.auth_impl.di.DaggerAuthScreenComponent
+import com.example.auth_impl.di.DaggerAuthScreenComponentWithComponentDep
+import com.example.component.findDependency
 import javax.inject.Inject
 
 class AuthActivity : AppCompatActivity() {
@@ -27,12 +30,15 @@ class AuthActivity : AppCompatActivity() {
 //            .inject(this)
 //
 //        or
-        DaggerAuthScreenComponent.factory().create(
-            this,
-            findDependency<AuthDependencies>()
-        )
+        DaggerAuthScreenComponentWithComponentDep.factory()
+            .create(
+                this,
+                findDependency<AuthDependencies>()
+            )
+            .inject(this)
+
         viewModel.userName.observe(this) { userName ->
-            binding.textviewUser.text = "Username: $userName"
+            binding.textviewUser.text = userName
         }
 
         viewModel.isAuthButtonVisible.observe(this) { isVisible ->

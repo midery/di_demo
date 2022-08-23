@@ -1,5 +1,6 @@
 package com.example.auth_impl
 
+import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,12 +17,11 @@ interface AuthViewModel {
 
 class AuthViewModelImpl @Inject constructor(
     private val authInteractor: AuthInteractor,
-    private val resources: Resources
+//    private val resources: Resources
 ) : AuthViewModel, ViewModel() {
 
     override val userName: MutableLiveData<String> = MutableLiveData()
-    override val isAuthButtonVisible: LiveData<Boolean>
-        MutableLiveData()
+    override val isAuthButtonVisible = MutableLiveData<Boolean>()
 
     init {
         renderAuthorized(isAuthorized = authInteractor.isAuthorized())
@@ -30,9 +30,9 @@ class AuthViewModelImpl @Inject constructor(
     private fun renderAuthorized(isAuthorized: Boolean) {
         isAuthButtonVisible.value = !isAuthorized
         if (isAuthorized) {
-            userName.value = authInteractor.getUserName()
+            userName.value = "UserName: ${authInteractor.getUserName()}"
         } else {
-            userName.value = resources.getString(R.string.auth_unknown)
+            userName.value = R.string.auth_unknown.toString()
         }
     }
 

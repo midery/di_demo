@@ -2,7 +2,6 @@ package com.example.auth_impl.di
 
 import com.example.auth_impl.AuthActivity
 import com.example.scopes.AppScope
-import com.example.scopes.PerActivity
 import com.squareup.anvil.annotations.MergeComponent
 import dagger.BindsInstance
 import dagger.Component
