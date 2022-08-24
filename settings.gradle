@@ -16,6 +16,7 @@ rootProject.name = "di_demo"
 include ':app'
 include ':auth:api'
 include ':auth:impl'
+include ':auth:impl:stubs'
 include ':common:android'
 include ':common:scopes'
 include ':common:component-holder'

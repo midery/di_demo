@@ -12,7 +12,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.auth_api.AuthDependencies
 import com.example.component.findDependency
-import com.example.di_demo.feature.StubAuthInteractor
+import com.example.auth_impl.stubs.StubAuthInteractor
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.containsString
 

@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import javax.inject.Singleton
 
+@Singleton
 @ContributesBinding(AppScope::class)
 class AuthInteractorImpl @Inject constructor() : AuthInteractor {
 

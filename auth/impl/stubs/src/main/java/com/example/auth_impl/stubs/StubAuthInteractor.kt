@@ -1,10 +1,9 @@
-package com.example.di_demo.feature
+package com.example.auth_impl.stubs
 
 import com.example.auth_api.AuthInteractor
 import com.example.auth_impl.AuthInteractorImpl
 import com.example.scopes.AppScope
 import com.squareup.anvil.annotations.ContributesBinding
-import javax.inject.Inject
 
 @ContributesBinding(
     AppScope::class,
