@@ -1,5 +1,6 @@
 package com.example.di_demo
 
+import android.app.Application
 import com.example.scopes.AppScope
 import com.example.scopes.SingleIn
 import com.squareup.anvil.annotations.MergeComponent
@@ -14,6 +15,8 @@ interface TestAppComponent : AppComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance app: TestApp): TestAppComponent
+        fun create(
+            @BindsInstance application: Application
+        ): TestAppComponent
     }
 }

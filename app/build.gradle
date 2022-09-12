@@ -51,6 +51,7 @@ dependencies {
     implementation project(':auth:impl')
     implementation project(":common:scopes")
     implementation project(":common:android")
+    implementation project(":common:android:api")
     implementation project(":common:component-holder")
     implementation 'com.google.dagger:dagger:2.43.2'
 

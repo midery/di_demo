@@ -16,8 +16,3 @@ object ResourcesModule {
         application.resources
 }
 
-@ContributesTo(AppScope::class)
-interface ResourcesDependencies {
-    fun resources(): Resources
-}
-

@@ -1,14 +1,11 @@
 package com.example.android.di
 
 import android.app.Activity
+import com.example.android.api.TextFormatter
 import com.example.scopes.ActivityScope
 import com.example.scopes.FragmentScope
 import com.squareup.anvil.annotations.ContributesBinding
 import javax.inject.Inject
-
-interface TextFormatter {
-    fun format(text: String): String
-}
 
 @ContributesBinding(ActivityScope::class)
 @ContributesBinding(FragmentScope::class)

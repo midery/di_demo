@@ -4,7 +4,7 @@ import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.android.di.TextFormatter
+import com.example.android.api.TextFormatter
 import com.example.auth_api.AuthInteractor
 import javax.inject.Inject
 

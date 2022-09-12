@@ -8,6 +8,7 @@ apply from: "../../baseLibrary.gradle"
 
 dependencies {
     implementation project(":common:scopes")
+    implementation project(":common:android:api")
     implementation 'com.google.dagger:dagger:2.43.2'
 }
 
