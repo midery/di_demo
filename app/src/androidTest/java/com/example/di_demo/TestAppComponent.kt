@@ -1,12 +1,12 @@
 package com.example.di_demo
 
 import com.example.scopes.AppScope
+import com.example.scopes.SingleIn
 import com.squareup.anvil.annotations.MergeComponent
 import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Singleton
 
-@Singleton
+@SingleIn(AppScope::class)
 @MergeComponent(
     AppScope::class,
 )
