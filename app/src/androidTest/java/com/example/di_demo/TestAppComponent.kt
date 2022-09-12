@@ -11,7 +11,7 @@ import dagger.Component
 @MergeComponent(
     AppScope::class,
 )
-interface TestAppComponent : AppComponent {
+interface TestAppComponent {
 
     @Component.Factory
     interface Factory {
