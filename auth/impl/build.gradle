@@ -26,7 +26,6 @@ dependencies {
     kapt "com.snap.daggerbrowser:daggerbrowser-processor:0.7"
 
     implementation project(":auth:api")
-    implementation project(":common:android:api")
     implementation project(":common:scopes")
     implementation project(":common:component-holder")
 }

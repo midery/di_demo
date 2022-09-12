@@ -4,14 +4,12 @@ import android.app.Activity
 import com.example.auth_impl.AuthActivity
 import com.example.scopes.ActivityScope
 import com.example.scopes.AppScope
-import com.example.scopes.FragmentScope
-import com.example.scopes.SingleIn
 import com.squareup.anvil.annotations.ContributesSubcomponent
 import com.squareup.anvil.annotations.ContributesTo
 import dagger.BindsInstance
 
 @ContributesSubcomponent(
-    scope = FragmentScope::class,
+    scope = ActivityScope::class,
     parentScope = AppScope::class,
 )
 interface AuthScreenMergeComponent {
@@ -26,6 +24,6 @@ interface AuthScreenMergeComponent {
 
     @ContributesTo(AppScope::class)
     interface ParentComponent {
-        fun authScreenMergeComponentFactory(): Factory
+        fun authScreenMergeComponentFactory(): AuthScreenMergeComponent.Factory
     }
 }

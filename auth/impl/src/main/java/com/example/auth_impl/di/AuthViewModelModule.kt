@@ -8,7 +8,6 @@ import com.example.auth_impl.AuthViewModel
 import com.example.auth_impl.AuthViewModelImpl
 import com.example.auth_impl.common.ViewModelFactory
 import com.example.scopes.ActivityScope
-import com.example.scopes.FragmentScope
 import com.squareup.anvil.annotations.ContributesTo
 import dagger.Binds
 import dagger.Module
@@ -17,7 +16,6 @@ import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 
 @ContributesTo(ActivityScope::class)
-@ContributesTo(FragmentScope::class)
 @Module(includes = [AuthViewModelModule.Declarations::class])
 object AuthViewModelModule {
 
