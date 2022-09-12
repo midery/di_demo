@@ -2,12 +2,13 @@ package com.example.auth_impl
 
 import com.example.auth_api.AuthInteractor
 import com.example.scopes.AppScope
+import com.example.scopes.SingleIn
 import com.squareup.anvil.annotations.ContributesBinding
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
+@SingleIn(AppScope::class)
 @ContributesBinding(AppScope::class)
 class AuthInteractorImpl @Inject constructor() : AuthInteractor {
 

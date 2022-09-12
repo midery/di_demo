@@ -4,6 +4,7 @@ import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.android.di.TextFormatter
 import com.example.auth_api.AuthInteractor
 import javax.inject.Inject
 
@@ -17,7 +18,8 @@ interface AuthViewModel {
 
 class AuthViewModelImpl @Inject constructor(
     private val authInteractor: AuthInteractor,
-//    private val resources: Resources
+    private val formatter: TextFormatter,
+    private val resources: Resources
 ) : AuthViewModel, ViewModel() {
 
     override val userName: MutableLiveData<String> = MutableLiveData()
@@ -29,11 +31,12 @@ class AuthViewModelImpl @Inject constructor(
 
     private fun renderAuthorized(isAuthorized: Boolean) {
         isAuthButtonVisible.value = !isAuthorized
-        if (isAuthorized) {
-            userName.value = "UserName: ${authInteractor.getUserName()}"
+        val authorizedText = if (isAuthorized) {
+            "UserName: ${authInteractor.getUserName()}"
         } else {
-            userName.value = R.string.auth_unknown.toString()
+            resources.getString(R.string.auth_unknown)
         }
+        userName.value = formatter.format(authorizedText)
     }
 
     override fun onAuthClicked() {
