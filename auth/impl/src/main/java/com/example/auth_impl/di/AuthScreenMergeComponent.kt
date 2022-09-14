@@ -11,7 +11,7 @@ import com.squareup.anvil.annotations.ContributesTo
 import dagger.BindsInstance
 
 @ContributesSubcomponent(
-    scope = FragmentScope::class,
+    scope = ActivityScope::class,
     parentScope = AppScope::class,
 )
 interface AuthScreenMergeComponent {

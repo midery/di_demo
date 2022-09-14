@@ -29,4 +29,5 @@ dependencies {
     implementation project(":common:android:api")
     implementation project(":common:scopes")
     implementation project(":common:component-holder")
+    implementation project(":feature-toggles:auth")
 }

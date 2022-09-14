@@ -1,0 +1,18 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.squareup.anvil' version "2.4.2"
+}
+
+apply from: "../../baseLibrary.gradle"
+
+dependencies {
+    implementation project(":common:scopes")
+    implementation project(":common:android:api")
+    api project(":feature-toggles:core")
+    implementation 'com.google.dagger:dagger:2.43.2'
+}
+
+anvil {
+    generateDaggerFactories = true
+}

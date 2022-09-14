@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import com.example.android.api.TextFormatter
 import com.example.auth_api.AuthInteractor
 import com.example.auth_api.UserAuthorizedObserver
+import com.example.feature_toggles.auth.AuthNameFormatterToggle
+import com.example.feature_toggles.core.FeatureToggleStorage
 import javax.inject.Inject
 
 interface AuthViewModel {
@@ -21,6 +23,7 @@ class AuthViewModelImpl @Inject constructor(
     private val authInteractor: AuthInteractor,
     private val formatter: TextFormatter,
     private val resources: Resources,
+    private val featureToggleStorage: FeatureToggleStorage,
     private val userAuthorizedObserver: UserAuthorizedObserver
 ) : AuthViewModel, ViewModel() {
 
@@ -40,7 +43,11 @@ class AuthViewModelImpl @Inject constructor(
         } else {
             resources.getString(R.string.auth_unknown)
         }
-        userName.value = formatter.format(authorizedText)
+        userName.value = if (featureToggleStorage.get(AuthNameFormatterToggle::class)) {
+            formatter.format(authorizedText)
+        } else {
+            authorizedText
+        }
     }
 
     override fun onAuthClicked() {
