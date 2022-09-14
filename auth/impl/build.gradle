@@ -12,9 +12,7 @@ android {
         viewBinding true
     }
 }
-anvil {
-    generateDaggerFactories = true
-}
+
 
 dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -22,10 +20,11 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
 
     implementation 'com.google.dagger:dagger:2.43.2'
-//    kapt "com.google.dagger:dagger-compiler:2.43.2"
+    kapt "com.google.dagger:dagger-compiler:2.43.2"
     kapt "com.snap.daggerbrowser:daggerbrowser-processor:0.7"
 
     implementation project(":auth:api")
+    implementation project(":common:android")
     implementation project(":common:android:api")
     implementation project(":common:scopes")
     implementation project(":common:component-holder")

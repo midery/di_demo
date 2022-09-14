@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.auth_impl.databinding.ActivityAuthBinding
-import com.example.auth_impl.di.AuthScreenMergeComponent
+import com.example.auth_impl.di.DaggerAuthScreenComponentWithComponentDep
 import com.example.component.findDependency
 import javax.inject.Inject
 
@@ -22,23 +22,18 @@ class AuthActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-//        DaggerAuthScreenComponent.factory()
+//        findDependency<AuthScreenMergeComponent.ParentComponent>()
+//            .authScreenMergeComponentFactory()
 //            .create(this)
 //            .inject(this)
-//
-//        or
-//        DaggerAuthScreenMergeComponent.factory()
-//            .create(
-//                this,
-//                findDependency<AuthDependencies>()
-//            )
-//            .inject(this)
 
-        findDependency<AuthScreenMergeComponent.ParentComponent>()
-            .authScreenMergeComponentFactory()
-            .create(this)
+        DaggerAuthScreenComponentWithComponentDep.factory()
+            .create(
+                authActivity = this,
+                authDependencies = findDependency(),
+                resourcesDependencies = findDependency()
+            )
             .inject(this)
-
 
         viewModel.userName.observe(this) { userName ->
             binding.textviewUser.text = userName

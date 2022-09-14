@@ -10,22 +10,22 @@ import com.squareup.anvil.annotations.ContributesSubcomponent
 import com.squareup.anvil.annotations.ContributesTo
 import dagger.BindsInstance
 
-@ContributesSubcomponent(
-    scope = ActivityScope::class,
-    parentScope = AppScope::class,
-)
-interface AuthScreenMergeComponent {
-
-    fun inject(authActivity: AuthActivity)
-
-    @ContributesSubcomponent.Factory
-    interface Factory {
-
-        fun create(@BindsInstance activity: Activity): AuthScreenMergeComponent
-    }
-
-    @ContributesTo(AppScope::class)
-    interface ParentComponent {
-        fun authScreenMergeComponentFactory(): Factory
-    }
-}
+//@ContributesSubcomponent(
+//    scope = ActivityScope::class,
+//    parentScope = AppScope::class,
+//)
+//interface AuthScreenMergeComponent {
+//
+//    fun inject(authActivity: AuthActivity)
+//
+//    @ContributesSubcomponent.Factory
+//    interface Factory {
+//
+//        fun create(@BindsInstance activity: Activity): AuthScreenMergeComponent
+//    }
+//
+//    @ContributesTo(AppScope::class)
+//    interface ParentComponent {
+//        fun authScreenMergeComponentFactory(): Factory
+//    }
+//}
