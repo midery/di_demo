@@ -6,4 +6,6 @@ import com.squareup.anvil.annotations.ContributesTo
 @ContributesTo(AppScope::class)
 interface AuthDependencies {
     fun authInteractor(): AuthInteractor
+    fun userAuthorizedObserver(): UserAuthorizedObserver
+    fun userAuthorizedUpdater(): UserAuthorizedUpdater
 }
