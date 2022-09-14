@@ -22,7 +22,7 @@ import org.junit.runner.RunWith
 import org.junit.Rule
 
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+class StubAuthTest {
 
     @Rule
     @JvmField
@@ -30,9 +30,11 @@ class ExampleInstrumentedTest {
 
     @Test
     fun authorize_stub_user() {
-        onView(withText("Next")).perform(click())
+        val stubUserText = "Stub user!"
+        StubAuthInteractor.stubUserName = stubUserText
 
-        onView(withText(containsString("Stub user!")))
+        onView(withText("Next")).perform(click())
+        onView(withText(containsString(stubUserText)))
             .check(matches(withEffectiveVisibility(VISIBLE)))
     }
 

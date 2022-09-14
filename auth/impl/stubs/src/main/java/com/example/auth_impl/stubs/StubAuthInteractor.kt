@@ -11,8 +11,10 @@ import com.squareup.anvil.annotations.ContributesBinding
 )
 object StubAuthInteractor : AuthInteractor {
 
+    var stubUserName = ""
+
     override fun getUserName(): String {
-        return "Stub user!"
+        return stubUserName
     }
 
     override fun isAuthorized(): Boolean = true
