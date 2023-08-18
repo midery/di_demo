@@ -1,0 +1,8 @@
+default-scenarios = ["app_assembleDebug"]
+
+app_assembleDebug {
+    title = "Clean Build Debug"
+    # Run the 'assemble' task
+    tasks = [":app:assembleDebug"]
+    cleanup-tasks = ["clean"]
+}
