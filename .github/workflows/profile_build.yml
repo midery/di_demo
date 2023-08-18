@@ -27,7 +27,7 @@ jobs:
           gradle-home-cache-cleanup: true
 
       - name: Install gradle-profiler
-        uses: sdkman/sdkman-action@b1f9b696c79148b66d3d3a06f7ea801820318d0f
+        uses: sdkman/sdkman-action@main
         id: sdkman
         with:
           candidate: gradleprofiler
@@ -36,8 +36,11 @@ jobs:
       - name: Profile build
         run: bash ci/profiler/profile_build.sh
 
+      - name: Print raw profile results
+        run: cat profile-out/benchmark.csv
+
       - name: Upload profile results
         uses: actions/upload-artifact@v2
         with:
-          name: head-benchmark
-          path: profile-out/benchmark.csv
+          name: benchmark_result
+          path: profile-out
