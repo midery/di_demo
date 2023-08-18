@@ -1,0 +1,42 @@
+name: Profile Gradle Build
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  profile_build:
+    name: Profile Gradle Build
+    runs-on: 8-Core
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 8
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: current
+          gradle-home-cache-cleanup: true
+
+      - name: Install gradle-profiler
+        uses: sdkman/sdkman-action@v1
+        id: sdkman
+        with:
+          candidate: gradleprofiler
+          version: 0.20.0
+
+      - name: Profile build
+        run: bash ci/profiler/profile_build.sh
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: head-benchmark
+          path: profile-out/benchmark.csv
