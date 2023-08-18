@@ -27,7 +27,7 @@ jobs:
           gradle-home-cache-cleanup: true
 
       - name: Install gradle-profiler
-        uses: sdkman/sdkman-action@v1
+        uses: sdkman/sdkman-action@v2
         id: sdkman
         with:
           candidate: gradleprofiler
