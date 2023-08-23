@@ -2,6 +2,17 @@ name: Profile Gradle Build
 
 on:
   workflow_dispatch:
+    inputs:
+      warm_ups_count:
+        description: 'Number of warm-up builds before actual benchmarking'
+        required: true
+        default: '3'
+
+      iterations_count:
+        description: 'Number of iterations which will be shown in actual build report'
+        required: true
+        default: '5'
+
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -35,6 +46,9 @@ jobs:
 
       - name: Profile build
         run: bash ci/profiler/profile_build.sh
+        env:
+          WARM_UPS_COUNT: ${{ github.event.inputs.warm_ups_count }}
+          ITERATIONS_COUNT: ${{ github.event.inputs.iterations_count }}
 
       - name: Print raw profile results
         run: bash ci/profiler/profile_print.sh
