@@ -40,7 +40,7 @@ jobs:
         run: bash ci/profiler/profile_print.sh
 
       - name: Export raw profile results
-        run: echo "${{ env.SlACK_MESSAGE }}"
+        run: printenv SLACK_MESSAGE
 
       - name: Upload profile results
         uses: actions/upload-artifact@v3
