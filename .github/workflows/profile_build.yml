@@ -37,7 +37,7 @@ jobs:
         run: bash ci/profiler/profile_build.sh
 
       - name: Print raw profile results
-        run: bash ci/profiler/profile_build.sh
+        run: bash ci/profiler/profile_print.sh
 
       - name: Export raw profile results
         run: echo "${{ env.SlACK_MESSAGE }}"
