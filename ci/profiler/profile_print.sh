@@ -5,9 +5,7 @@ PROFILE_RESULT=$(cat profile-out/benchmark.csv)
 
 SLACK_MESSAGE=$(cat << EOF
 :hammer_and_wrench: Android build measurement complete:
-```
 $PROFILE_RESULT
-```
 EOF
 )
 
