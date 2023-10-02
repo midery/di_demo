@@ -22,4 +22,4 @@ jobs:
           gradle-version: current
 
       - name: Actual build
-        run: ./gradlew common:android:compileReleaseKotlin
+        run: ./gradlew common:android:compileReleaseKotlin --info
