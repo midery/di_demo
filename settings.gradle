@@ -24,3 +24,9 @@ include ':common:component-holder'
 include ':feature-toggles:core'
 include ':feature-toggles:auth'
 include ':feature-toggles:main'
+
+buildCache {
+    local {
+        setEnabled(true)
+    }
+}
