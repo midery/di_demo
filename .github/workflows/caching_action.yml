@@ -1,4 +1,7 @@
-name: Profile Gradle Build
+name: Cache Gradle Build
+
+on:
+  workflow_dispatch
 
 jobs:
   cache_build:
