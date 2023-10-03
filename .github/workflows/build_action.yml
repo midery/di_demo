@@ -16,10 +16,23 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - name: Print caches
+        run: | 
+          if test -d ~/.gradle/caches; then
+            ls ~/.gradle/caches
+          fi
+
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
           gradle-version: current
+        env:
+          GRADLE_BUILD_ACTION_CACHE_DEBUG_ENABLED: true
 
+      - name: Print caches after setup
+        run: |
+          if test -d ~/.gradle/caches; then
+            ls ~/.gradle/caches
+          fi
       - name: Actual build
         run: ./gradlew common:android:compileReleaseKotlin --info
