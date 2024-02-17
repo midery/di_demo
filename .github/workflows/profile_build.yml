@@ -22,9 +22,9 @@ jobs:
   profile_build:
     name: Profile Gradle Build
     runs-on: ubuntu-latest
-    env:
-      TZ: Europe/Berlin
-      LC_ALL: en_GB.UTF-8
+#    env:
+#      TZ: Europe/Berlin
+#      LC_ALL: en_GB.UTF-8
     steps:
       - uses: actions/checkout@v3
 
@@ -40,12 +40,12 @@ jobs:
           gradle-version: current
           gradle-home-cache-cleanup: true
 
-      - name: Install gradle-profiler
-        uses: sdkman/sdkman-action@main
-        id: sdkman
-        with:
-          candidate: gradleprofiler
-          version: 0.20.0
+#      - name: Install gradle-profiler
+#        uses: sdkman/sdkman-action@main
+#        id: sdkman
+#        with:
+#          candidate: gradleprofiler
+#          version: 0.20.0
 
 #      - uses: actions/setup-node@v3
 #        with:
@@ -54,11 +54,11 @@ jobs:
 #      - name: Install html to image
 #        run: npm install -g node-html-to-image-cli
 
-      - name: Profile build
-        run: bash ci/profiler/profile_build.sh
-        env:
-          WARM_UPS_COUNT: ${{ github.event.inputs.warm_ups_count }}
-          ITERATIONS_COUNT: ${{ github.event.inputs.iterations_count }}
+#      - name: Profile build
+#        run: bash ci/profiler/profile_build.sh
+#        env:
+#          WARM_UPS_COUNT: ${{ github.event.inputs.warm_ups_count }}
+#          ITERATIONS_COUNT: ${{ github.event.inputs.iterations_count }}
 
       - name: Run tests
         if: always()
@@ -73,8 +73,8 @@ jobs:
 #      - name: Generate image
 #        run: node-html-to-image-cli profile-out/benchmark.html profile-out/benchmark.png
 
-      - name: Upload profile results
-        uses: actions/upload-artifact@v2
-        with:
-          name: benchmark_result
-          path: profile-out
+#      - name: Upload profile results
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: benchmark_result
+#          path: profile-out
