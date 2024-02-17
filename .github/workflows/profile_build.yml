@@ -22,6 +22,9 @@ jobs:
   profile_build:
     name: Profile Gradle Build
     runs-on: ubuntu-latest
+    env:
+      TZ: Europe/Berlin
+      LC_ALL: en_GB.UTF-8
     steps:
       - uses: actions/checkout@v3
 
@@ -44,12 +47,12 @@ jobs:
           candidate: gradleprofiler
           version: 0.20.0
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
+#      - uses: actions/setup-node@v3
+#        with:
+#          node-version: 18
 
-      - name: Install html to image
-        run: npm install -g node-html-to-image-cli
+#      - name: Install html to image
+#        run: npm install -g node-html-to-image-cli
 
       - name: Profile build
         run: bash ci/profiler/profile_build.sh
@@ -67,8 +70,8 @@ jobs:
 #      - name: Export raw profile results
 #        run: printenv SLACK_MESSAGE
 
-      - name: Generate image
-        run: node-html-to-image-cli profile-out/benchmark.html profile-out/benchmark.png
+#      - name: Generate image
+#        run: node-html-to-image-cli profile-out/benchmark.html profile-out/benchmark.png
 
       - name: Upload profile results
         uses: actions/upload-artifact@v2
