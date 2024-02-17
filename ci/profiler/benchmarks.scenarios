@@ -1,23 +1,7 @@
-app_assembleDebug_clean {
+auth_tests_clean {
     title = "Clean Build Debug"
-    tasks = [":app:assembleDebug"]
+    tasks = [":auth:impl:testDebugUnitTest"]
     cleanup-tasks = ["clean"]
     # Remove cache support to ensure that remote cache doesn't affect measurement
     gradle-args = ["--no-build-cache", "--no-configuration-cache"]
 }
-
-app_assembleDebug_abi_changed {
-    title = "ABI debug"
-    tasks = [":app:assembleDebug"]
-    apply-abi-change-to = "feature-toggles/core/src/main/kotlin/com/example/feature_toggles/core/FeatureToggle.kt"
-    # Remove cache support to ensure that remote cache doesn't affect measurement
-    gradle-args = ["--no-build-cache", "--no-configuration-cache"]
-}
-
-app_configuration {
-    title = "Configuration time for app module"
-    tasks = [":app:assembleDebug"]
-    # Remove cache support to ensure that remote cache doesn't affect measurement
-    gradle-args = ["--dry-run", "--no-configuration-cache"]
-}
-

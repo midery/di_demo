@@ -22,6 +22,7 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.43.2'
     kapt "com.google.dagger:dagger-compiler:2.43.2"
     kapt "com.snap.daggerbrowser:daggerbrowser-processor:0.7"
+    testImplementation 'junit:junit:4.13.2'
 
     implementation project(":auth:api")
     implementation project(":common:android")
