@@ -57,6 +57,10 @@ jobs:
           WARM_UPS_COUNT: ${{ github.event.inputs.warm_ups_count }}
           ITERATIONS_COUNT: ${{ github.event.inputs.iterations_count }}
 
+      - name: Run tests
+        if: always()
+        run: ./gradlew :auth:impl:testDebugUnitTest --no-build-cache --no-configuration-cache --continue
+
 #      - name: Print raw profile results
 #        run: bash ci/profiler/profile_print.sh
 #
