@@ -3,5 +3,5 @@ auth_tests_clean {
     tasks = [":auth:impl:testDebugUnitTest"]
     cleanup-tasks = ["clean"]
     # Remove cache support to ensure that remote cache doesn't affect measurement
-    gradle-args = ["--no-build-cache", "--no-configuration-cache"]
+    gradle-args = ["--no-build-cache", "--no-configuration-cache", "--continue"]
 }
